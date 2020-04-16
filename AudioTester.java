@@ -8,19 +8,20 @@ public class AudioTester extends Application{
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		AudioHandler audioTester = new AudioHandler();
-		System.out.print("I have run.");
-		if (audioTester.registerAudio("C:\\Users\\alex.THEKNELLERS\\Documents\\Multitrack Things\\please hold on.mp3", true, "abba")) {
-			System.out.print("I have done the thing.");
-		}
+		audioTester.registerAudio("C:\\Users\\alex.THEKNELLERS\\Documents\\Multitrack Things\\please hold on.mp3", true, "abba");
+		audioTester.registerAudio("C:\\Users\\alex.THEKNELLERS\\Documents\\Multitrack Things\\Apple Blossom Time 2nd Edit.wav",false,"blossom");
 		audioTester.registerAudio("C:\\Users\\alex.THEKNELLERS\\Documents\\Multitrack Things\\Apple Blossom Time 2nd Edit.wav",false,"blossom");
 		audioTester.startAudio("abba");
 		audioTester.startAudio("blossom");
 		System.out.print("Returning");
 		Thread.sleep(4000);
 		audioTester.stopAudio("blossom");
+		audioTester.stopAudio("blossom");
+		audioTester.startAudio("abba");
 		Thread.sleep(4000);
 		audioTester.startAudio("bla");
 		audioTester.startAudio("blossom");
+		audioTester.deregisterAudio("bla");
 		while (true);
 	}
 
