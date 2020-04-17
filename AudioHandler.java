@@ -42,6 +42,11 @@ public class AudioHandler {
 		}
 	}
 	
+	/**
+	 * {@code AudioList} is an extension of {@code ArrayList} specifically for {@code AudioFile} objects which includes methods to add and get
+	 * objects based on their unique ID String field.
+	 *
+	 */
 	private class AudioList extends ArrayList<AudioFile> {
 		
 		AudioList() {
