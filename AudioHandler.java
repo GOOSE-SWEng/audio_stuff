@@ -18,8 +18,6 @@ public class AudioHandler {
 	/**
 	 * The {@code AudioFile} class is a construct made by the {@code AudioHandler} class to store registered audio files,
 	 * as well as generate {@code MediaPlayer} for each file stored.
-	 * @author Goose Software Design on behalf of CUBIXEL
-	 *
 	 */
 	private class AudioFile {
 		private String id; //the unique identifier assigned to the audio file
@@ -86,11 +84,24 @@ public class AudioHandler {
 			return null;
 		}
 	}
+	
+	/**
+	 * 	
+	 * @param url  The file path or url of the audio file
+	 * @param looping A boolean as to whether the audio should repeat indefinitely
+	 * @param id A unique ID reference to the audio
+	 * @return Returns True if the requested ID was unique and the file has been registered, False if not.
+	 */
 	public Boolean registerAudio(String url, Boolean looping, String id) {
 		return audios.addAudioFile(new AudioFile(url, looping, id));
 	}
 	
-	public void startAudio(String id) throws NullPointerException {
+	/**
+	 * Starts a registered audio file playing
+	 * @param id ID of the audio file to start playing
+	 * 
+	 */
+	public void startAudio(String id) {
 		try {
 			audios.getFromId(id).player.play();
 		} catch (NullPointerException e) {
@@ -98,6 +109,10 @@ public class AudioHandler {
 		}
 	}
 	
+	/**
+	 * 	Searches through {@code audios} and stops an audio from playing.
+	 * @param id ID of the audio file to be stopped from playing
+	 */
 	public void stopAudio(String id) {
 		try {
 			audios.getFromId(id).player.stop();
@@ -106,6 +121,11 @@ public class AudioHandler {
 		}
 	}
 	
+	/**
+	 * Deregisters an audio file
+	 * @param id
+	 * @return Returns {@code true} if successful. Returns {@code false} if the ID was not already registered.
+	 */
 	public Boolean deregisterAudio(String id) {
 		for (int i = 0; i < audios.size(); i++) {
 			if (id == audios.get(i).getId()) {
